@@ -1,1 +1,1 @@
-# mimosatek
+# mimostek
