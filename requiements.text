@@ -3,3 +3,4 @@ streamlist
 numpy
 tensorflow
 celery
+uvicorn

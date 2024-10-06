@@ -49,7 +49,7 @@ def predict_disease(image_path, confidence_threshold=0.6):
     if confidence > confidence_threshold:
         result_json = disease_id[argmax_result]  # Dự đoán dựa trên index lớn nhất
     else:
-        result_json = "Unknown"  # Không đủ độ tự tin để đưa ra dự đoán
+        result_json = "Unknown"
 
     return result_json
 
