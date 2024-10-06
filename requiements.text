@@ -1,2 +1,5 @@
 fastAPI
 streamlist
+numpy
+tensorflow
+celery
