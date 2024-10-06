@@ -17,8 +17,10 @@ os.environ['GROQ_API_KEY'] = 'gsk_cbCs0IyWHx3QLHQqKSqxWGdyb3FYyu9jWaUsRcjCnmtqpS
 conversational_memory_length = 50
 memory = ConversationBufferWindowMemory(k=conversational_memory_length, memory_key="chat_history", return_messages=True)
 
+
 class UserInput(BaseModel):
     message: str
+
 
 def query_llm(user_input: UserInput):
     groq_api_key = os.environ['GROQ_API_KEY']
@@ -55,6 +57,7 @@ def query_llm(user_input: UserInput):
 
         response = conversation.predict(human_input=user_input.message)
         return response
+
 
 if __name__ == "__main__":
     user_input = UserInput(message="Bạn có thể cho tôi biết về bệnh vàng lá ?")

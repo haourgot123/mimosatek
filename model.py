@@ -1,8 +1,6 @@
-import tensorflow as tf
-import json
-from PIL import Image
 import numpy as np
-
+import tensorflow as tf
+from PIL import Image
 
 model_path = r"E:\Personal_Project\MLops\Streamlist\Models\model.tflite"
 image_path = r"E:\Personal_Project\MLops\Streamlist\Images\00d798f7-d21b-41c9-bb08-895cd315f7e6__RS_HL 0317.JPG"
@@ -40,7 +38,7 @@ def predict_disease(image_path, confidence_threshold=0.6):
         output_data = interpreter.get_tensor(output_details[0]['index'])
 
     except Exception as e:
-        return json.dumps({"status_code": 500, "message": "Internal Server Error", "error": str(e)})
+        return {"status_code": 500, "message": "Internal Server Error", "error": str(e)}
 
     # Lấy giá trị dự đoán và confidence
     result = np.array(output_data[0])
@@ -53,11 +51,7 @@ def predict_disease(image_path, confidence_threshold=0.6):
     else:
         result_json = "Unknown"  # Không đủ độ tự tin để đưa ra dự đoán
 
-    # Trả về kết quả dưới dạng JSON
-    return json.dumps({
-        "predicted_class": result_json,
-        "confidence": float(confidence)  # Chuyển đổi numpy float thành Python float
-    })
+    return result_json
 
 
 # Ví dụ gọi hàm dự đoán
