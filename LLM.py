@@ -10,6 +10,9 @@ from langchain_core.messages import SystemMessage
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain_groq import ChatGroq
 
+# Thiết lập biến môi trường cho GROQ_API_KEY
+os.environ['GROQ_API_KEY'] = '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'
+
 # Thiết lập bộ nhớ cho cuộc hội thoại
 conversational_memory_length = 50
 memory = ConversationBufferWindowMemory(k=conversational_memory_length, memory_key="chat_history", return_messages=True)
@@ -52,3 +55,8 @@ def query_llm(user_input: UserInput):
 
         response = conversation.predict(human_input=user_input.message)
         return response
+
+if __name__ == "__main__":
+    user_input = UserInput(message="Bạn có thể cho tôi biết về bệnh vàng lá ?")
+    response = query_llm(user_input)
+    print(response)
